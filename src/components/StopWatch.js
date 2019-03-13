@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Lap from "./Lap"; 
+//import Lap from "./Lap"; 
 import Welcome from "./Welcome";
 import QuestionsAnswers from "./QuestionsAnswers";
 
@@ -10,8 +10,9 @@ export default class StopWatch extends Component {
         this.state = {
           secondsElapsed: this.props.initialSeconds,
           lastClearedIncrementer: null,
+          laps: []
         };  
-        this.laps = [];
+        this.incrementer = null;
       }
 
     formattedSeconds = (sec) => { 
@@ -35,19 +36,22 @@ export default class StopWatch extends Component {
     
     handleResetClick = () => {
         clearInterval(this.incrementer);
-        this.laps = [];
         this.setState({
           secondsElapsed: 0,
+          laps: []
         });
     }
     
     handleLabClick = () => {
-        this.laps = this.laps.concat([this.state.secondsElapsed]);
-        this.forceUpdate();
+        this.setState({
+          laps: this.state.laps.concat([this.state.secondsElapsed])
+        })
     }
     
     handleDeleteClick = (index) => {
-        return () => this.laps.splice(index, 1);
+      //return () => this.laps.splice(index, 1);
+      alert("this need to be deleted, I need to work on this. thank you");
+
     }
     
     render() {
@@ -59,7 +63,7 @@ export default class StopWatch extends Component {
           return (
             <div className="stopwatch">
               <Welcome />
-              
+
               <h1 className="stopwatch-timer">{this.formattedSeconds(secondsElapsed)}</h1>
       
               {(secondsElapsed === 0 || this.incrementer === lastClearedIncrementer
@@ -77,10 +81,11 @@ export default class StopWatch extends Component {
                 : null
               )}
       
-              <div className="stopwatch-laps">
-                { this.laps && this.laps.map((lap, i) => 
-                  <Lap index={i+1} lap={lap} onDelete={this.handleDeleteClick(i)} />) }
-              </div>
+              <ul className="stopwatch-laps">
+                { this.state.laps.map((lap, i) =>
+                    <li className="stopwatch-lap"><strong>{i + 1}</strong>/ {this.formattedSeconds(lap)} <button onClick={this.handleDeleteClick} > X </button> </li>)
+                }
+              </ul>
 
               <QuestionsAnswers />
             </div>

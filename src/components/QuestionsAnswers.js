@@ -10,6 +10,7 @@ export default () => {
             <li> Assignment of value to "secondsElapsed" variable was missing "this" object</li>
             <li> HandleresetClick function was using "," instead of ";" after laps value reset</li>
             <li> formattedSeconds function was called on H1 tag without "this" object </li>
+            <li> Also I tried to separate various codes into functional components</li>
         </ul>
 
         <h2> Thank you for your valuable time</h2>
