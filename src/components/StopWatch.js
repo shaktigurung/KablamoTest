@@ -49,9 +49,7 @@ export default class StopWatch extends Component {
     }
     
     handleDeleteClick = (index) => {
-      //return () => this.laps.splice(index, 1);
-      alert("this need to be deleted, I need to work on this. thank you");
-
+      return (this.state.laps.splice(index, 1));
     }
     
     render() {
@@ -83,7 +81,7 @@ export default class StopWatch extends Component {
       
               <ul className="stopwatch-laps">
                 { this.state.laps.map((lap, i) =>
-                    <li className="stopwatch-lap"><strong>{i + 1}</strong>/ {this.formattedSeconds(lap)} <button onClick={this.handleDeleteClick} > X </button> </li>)
+                    <li className="stopwatch-lap"><strong>{i + 1}</strong>/ {this.formattedSeconds(lap)} <button onClick={this.handleDeleteClick.bind(lap)} > X </button> </li>)
                 }
               </ul>
 

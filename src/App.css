@@ -22,7 +22,9 @@
 .App-link {
   color: #61dafb;
 }
-
+ul {
+  list-style: none;
+}
 .question-answer {
  list-style: none;
 }
