@@ -23,6 +23,14 @@
   color: #61dafb;
 }
 
+.question-answer {
+ list-style: none;
+}
+
+h4 {
+  color: red;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Lap from "./Lap"; 
+import Welcome from "./Welcome";
+import QuestionsAnswers from "./QuestionsAnswers";
 
 export default class StopWatch extends Component {
    
@@ -49,7 +51,6 @@ export default class StopWatch extends Component {
     }
     
     render() {
-        //const {initialSeconds} = this.props;
         const { 
             secondsElapsed, 
             lastClearedIncrementer,
@@ -57,6 +58,8 @@ export default class StopWatch extends Component {
       
           return (
             <div className="stopwatch">
+              <Welcome />
+              
               <h1 className="stopwatch-timer">{this.formattedSeconds(secondsElapsed)}</h1>
       
               {(secondsElapsed === 0 || this.incrementer === lastClearedIncrementer
@@ -78,7 +81,8 @@ export default class StopWatch extends Component {
                 { this.laps && this.laps.map((lap, i) => 
                   <Lap index={i+1} lap={lap} onDelete={this.handleDeleteClick(i)} />) }
               </div>
-             
+
+              <QuestionsAnswers />
             </div>
           );
         }
